@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 
 export function useFetch(url) {
-  //const [loading, setLoading] = useState(false);
   const [pokemonInfo, setPokemonInfo] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     fetch(url)
       .then((res) => res.json())
       .then((data) =>
@@ -14,8 +15,9 @@ export function useFetch(url) {
       .then((info) => {
         setPokemonInfo(info);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => setLoading(false));
   }, []);
 
-  return [pokemonInfo];
+  return [pokemonInfo, loading];
 }
