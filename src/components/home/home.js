@@ -1,13 +1,16 @@
 import "./home.css";
-import { useState, useEffect } from "react";
+import { useFetch } from "../useFetch/useFetch";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { NavBar } from "../navBar/navBar";
+import { Footer } from "../footer/footer";
 
 export function Home() {
-  const pokeApiUrl = "https://pokeapi.co/api/v2";
-  const [pokemonInfo, setPokemonInfo] = useState([]);
+  const pokeApiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0";
+  const [pokemonInfo] = useFetch(pokeApiUrl);
+
   const hexaDecimalsCharacters = [
     0,
     1,
@@ -26,25 +29,6 @@ export function Home() {
     "E",
     "F",
   ];
-
-  //function getAllPokemon() {
-  //   .catch((error) => console.log(error));
-  //}
-
-  useEffect(() => {
-    //getAllPokemon();
-
-    fetch(`${pokeApiUrl}/pokemon/?limit=10&offset=0`)
-      .then((res) => res.json())
-      .then((data) =>
-        Promise.all(data.results.map((pokemon) => fetch(pokemon.url)))
-      )
-      .then((response) => Promise.all(response.map((res) => res.json())))
-      .then((info) => {
-        setPokemonInfo(info);
-      })
-      .catch((err) => console.log(err));
-  }, []);
 
   function getCharacter(i) {
     return hexaDecimalsCharacters[i];
@@ -71,20 +55,16 @@ export function Home() {
     const generator = Math.floor(Math.random() * (max - min) + min);
     price += generator;
 
-    return price;
-  }
+    let priceFormat = Intl.NumberFormat("en-US");
 
-  console.log(randomPrice());
+    let priceFormated = priceFormat.format(price);
+
+    return priceFormated;
+  }
 
   return (
     <>
-      <nav>
-        <img src="/images/pokeball.png" alt="Pokeball" />
-
-        <Button variant="danger" type="button" size="sm">
-          User Name
-        </Button>
-      </nav>
+      <NavBar />
 
       <header>
         <img src="/images/pokemon-wallpaper.jpg" alt="Pokémon Team" />
@@ -105,7 +85,7 @@ export function Home() {
       </div>
 
       <main>
-        {pokemonInfo.map((pokemon) => (
+        {pokemonInfo?.map((pokemon) => (
           <Card
             style={{
               width: "200px",
@@ -141,24 +121,7 @@ export function Home() {
         ))}
       </main>
 
-      <footer>
-        <img src="/images/pokemon.png" alt="Pokemon" />
-
-        <ul>
-          <li>
-            <img src="/images/instagram.svg" alt="Instagram" />
-          </li>
-          <li>
-            <img src="/images/tiktok.svg" alt="Tik Tok" />
-          </li>
-          <li>
-            <img src="/images/twitter.svg" alt="Twitter" />
-          </li>
-          <li>
-            <img src="/images/discord.svg" alt="Discord" />
-          </li>
-        </ul>
-      </footer>
+      <Footer />
     </>
   );
 }
