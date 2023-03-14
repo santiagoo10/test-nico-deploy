@@ -15,8 +15,9 @@ header img {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 0 10px;
+  padding: 0 20px;
   padding-top: 30px;
+  background-color: rgb(24, 26, 27);
 }
 
 .searchBar,
@@ -62,11 +63,11 @@ header img {
 
 main {
   width: 100%;
-  background-color: transparent;
+  background-color: rgb(24, 26, 27);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
-  padding: 30px 10px;
+  padding: 30px 20px;
 }

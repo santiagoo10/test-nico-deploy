@@ -4,12 +4,12 @@ import { useFetch } from "../useFetch/useFetch";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import { NavBar } from "../navBar/navBar";
-import { Footer } from "../footer/footer";
+
+import { Spinner } from "../spinner/spinner";
 
 export function Home() {
   const pokeApiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0";
-  const [pokemonInfo] = useFetch(pokeApiUrl);
+  const [pokemonInfo, loading] = useFetch(pokeApiUrl);
 
   const hexaDecimalsCharacters = [
     0,
@@ -64,8 +64,6 @@ export function Home() {
 
   return (
     <>
-      <NavBar />
-
       <header>
         <img src="/images/pokemon-wallpaper.jpg" alt="Pokémon Team" />
       </header>
@@ -85,6 +83,7 @@ export function Home() {
       </div>
 
       <main>
+        {loading ? <Spinner /> : null}
         {pokemonInfo?.map((pokemon) => (
           <Card
             style={{
@@ -120,8 +119,6 @@ export function Home() {
           </Card>
         ))}
       </main>
-
-      <Footer />
     </>
   );
 }
