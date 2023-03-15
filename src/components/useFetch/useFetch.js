@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 export function useFetch(url) {
   const [pokemonInfo, setPokemonInfo] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -15,9 +16,9 @@ export function useFetch(url) {
       .then((info) => {
         setPokemonInfo(info);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => setError(err))
       .finally(() => setLoading(false));
   }, []);
 
-  return [pokemonInfo, loading];
+  return [pokemonInfo, loading, error];
 }
