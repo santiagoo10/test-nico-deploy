@@ -6,10 +6,11 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 import { Spinner } from "../spinner/spinner";
+import { ErrorAlert } from "../error/error";
 
 export function Home() {
   const pokeApiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0";
-  const [pokemonInfo, loading] = useFetch(pokeApiUrl);
+  const [pokemonInfo, loading, error] = useFetch(pokeApiUrl);
 
   const hexaDecimalsCharacters = [
     0,
@@ -83,7 +84,10 @@ export function Home() {
       </div>
 
       <main>
+        {error ? <ErrorAlert>{error}</ErrorAlert> : null}
+
         {loading ? <Spinner /> : null}
+
         {pokemonInfo?.map((pokemon) => (
           <Card
             style={{
