@@ -91,7 +91,7 @@ export function Home() {
         {pokemonInfo?.map((pokemon) => (
           <Card
             style={{
-              width: "200px",
+              width: "160px",
               backgroundColor: "rgb(39, 43, 44)",
               color: "white",
               borderRadius: "10px",
