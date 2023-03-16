@@ -1,5 +1,5 @@
 import "./home.css";
-import { useFetch } from "../useFetch/useFetch";
+import { useFetch } from "../../useFetch/useFetch";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
