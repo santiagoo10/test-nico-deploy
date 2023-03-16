@@ -1,7 +1,7 @@
 import "./App.css";
-import { Footer } from "./components/footer/footer";
-import { Home } from "./components/home/home";
 import { NavBar } from "./components/navBar/navBar";
+import { Home } from "./components/home/home";
+import { Footer } from "./components/footer/footer";
 
 function App() {
   return (
