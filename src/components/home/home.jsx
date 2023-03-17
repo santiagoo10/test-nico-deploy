@@ -1,5 +1,5 @@
 import "./home.css";
-import { useFetch } from "../../useFetch/useFetch";
+import { useFetchGetAllPokemons } from "../../useFetch/useFetch";
 import { generateNewColor } from "../../randomColor/randomColor";
 import { randomPrice } from "../../randomPrice/randomPrice";
 
@@ -13,8 +13,7 @@ import { ErrorAlert } from "../error/error";
 import { Spinner } from "../spinner/spinner";
 
 export function Home() {
-  const pokeApiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=10&offset=0";
-  const [pokemonInfo, loading, error] = useFetch(pokeApiUrl);
+  const [pokemonInfo, loading, error, handleAmountOfPokemons] = useFetchGetAllPokemons();
 
   return (
     <div className="home">
@@ -60,6 +59,9 @@ export function Home() {
             </Card.Body>
           </Card>
         ))}
+
+        <Button variant="info" onClick={handleAmountOfPokemons}>Load More</Button>
+
       </main>
     </div>
   );
