@@ -63,6 +63,6 @@ export function Home() {
         <Button variant="info" onClick={handleAmountOfPokemons}>Load More</Button>
 
       </main>
-    </div>
+    </div >
   );
 }
