@@ -10,30 +10,32 @@ footer {
 }
 
 footer img {
-  width: 150px;
+  width: 125px;
   cursor: pointer;
 }
 
 footer ul {
-  width: auto;
+  max-width: 50%;
   height: auto;
   display: flex;
+  justify-content: center;
   align-items: center;
+  gap: 10px;
   padding: 0;
   margin: 0;
-  flex-wrap: wrap;
 }
 
 footer ul li {
   list-style: none;
 }
 
-footer ul img {
-  width: 30px;
+footer ul li img {
+  width: 100%;
   margin: 0 5px;
   cursor: pointer;
 }
 
-footer ul img:hover {
-  width: 50px;
+footer ul li img:hover,
+footer ul li img:active {
+  width: 35px;
 }
