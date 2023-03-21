@@ -1,16 +1,6 @@
 import "./searchFilters.css"
-//import { useState } from "react";
-//import { useFetchGetAllPokemons } from "../../useFetch/getAllPokemons";
 
 export function SearchFilters({ handleSearchBar }) {
-    // const [searchBar, setSearchBar] = useState('')
-    // const { pokemons } = useFetchGetAllPokemons()
-
-    // function handleSearchBar(e) {
-    //     setSearchBar(e.target.value)
-    //     pokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(searchBar))
-
-    // }
 
     return (
         <div className="inputsContainer">
