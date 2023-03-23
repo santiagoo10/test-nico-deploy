@@ -8,15 +8,17 @@ import { ErrorAlert } from "../error/error";
 import { Spinner } from "../spinner/spinner";
 import { HomeCards } from "../cards/homeCards";
 import { SearchBarCards } from "../cards/searchBarCards";
+import { SelectFilterCards } from "../cards/selectFilterCards";
 
 import { useState } from "react";
 
 export function Home() {
-  const [pokemonInfo, loading, error, handleAmountOfPokemons] = useFetchGetPokemons();
 
   const [searchBar, setSearchBar] = useState(null)
-  const [searchBarResults, setSearchBarResults] = useState()
+  const [searchBarResults, setSearchBarResults] = useState(null)
+  const [selectFilterResults, setSelectFilterResults] = useState(null)
 
+  const [pokemonInfo, loading, error, handleAmountOfPokemons] = useFetchGetPokemons();
   const { pokemons } = useFetchGetAllPokemons()
 
   function handleSearchBar(e) {
@@ -24,10 +26,25 @@ export function Home() {
     setSearchBarResults(pokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(searchBar)))
   }
 
+  function handleAZfilterSelect(e) {
+    const optionValue = e.target.value;
+    { if (optionValue === "a-z") setSelectFilterResults(pokemons.sort(handlePokemonsArray)) }
+  }
+
+  function handlePokemonsArray(a, b) {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  }
+
   return (
     <div className="home">
       <Header />
-      <SearchFilters handleSearchBar={handleSearchBar} />
+      <SearchFilters handleSearchBar={handleSearchBar} handleAZfilterSelect={handleAZfilterSelect} />
 
       <main>
         {error ? <ErrorAlert>{error}</ErrorAlert> : null}
@@ -35,7 +52,11 @@ export function Home() {
         {loading ? <Spinner /> : null}
 
         {searchBar ? <SearchBarCards searchBarResults={searchBarResults} />
-          : <HomeCards pokemonInfo={pokemonInfo} handleAmountOfPokemons={handleAmountOfPokemons} />}
+          :
+          selectFilterResults ? <SelectFilterCards selectFilterResults={selectFilterResults} />
+            :
+            <HomeCards pokemonInfo={pokemonInfo} handleAmountOfPokemons={handleAmountOfPokemons} />}
+
       </main>
     </div >
   );
