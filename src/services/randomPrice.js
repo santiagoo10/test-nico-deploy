@@ -1,4 +1,4 @@
-export function randomPrice() {
+export function useRandomPrice() {
   let price = null;
 
   let min = Math.ceil(0);
@@ -9,7 +9,7 @@ export function randomPrice() {
 
   let priceFormat = Intl.NumberFormat("en-US");
 
-  let priceFormated = priceFormat.format(price);
+  let randomPrice = priceFormat.format(price);
 
-  return priceFormated;
+  return randomPrice;
 }

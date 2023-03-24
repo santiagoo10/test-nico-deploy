@@ -1,6 +1,6 @@
 import "./home.css";
-import { useFetchGetPokemons } from "../../useFetch/getPokemons";
-import { useFetchGetAllPokemons } from "../../useFetch/getAllPokemons";
+import { usePokemons } from "../../services/pokemons";
+import { useAllPokemons } from "../../services/allPokemons";
 
 import { Header } from "../header/header";
 import { SearchFilters } from "../searchFilters/searchFilters";
@@ -13,13 +13,12 @@ import { SelectFilterCards } from "../cards/selectFilterCards";
 import { useState } from "react";
 
 export function Home() {
-
   const [searchBar, setSearchBar] = useState(null)
   const [searchBarResults, setSearchBarResults] = useState(null)
   const [selectFilterResults, setSelectFilterResults] = useState(null)
 
-  const [pokemonInfo, loading, error, handleAmountOfPokemons] = useFetchGetPokemons();
-  const { pokemons } = useFetchGetAllPokemons()
+  const [pokemonInfo, loading, error, handleAmountOfPokemons] = usePokemons();
+  const { pokemons } = useAllPokemons()
 
   function handleSearchBar(e) {
     setSearchBar(e.target.value)
@@ -28,10 +27,10 @@ export function Home() {
 
   function handleAZfilterSelect(e) {
     const optionValue = e.target.value;
-    { if (optionValue === "a-z") setSelectFilterResults(pokemons.sort(handlePokemonsArray)) }
+    { if (optionValue === "a-z") setSelectFilterResults(pokemons.sort(handleNamesOrder)) }
   }
 
-  function handlePokemonsArray(a, b) {
+  function handleNamesOrder(a, b) {
     if (a.name < b.name) {
       return -1;
     }
@@ -56,7 +55,6 @@ export function Home() {
           selectFilterResults ? <SelectFilterCards selectFilterResults={selectFilterResults} />
             :
             <HomeCards pokemonInfo={pokemonInfo} handleAmountOfPokemons={handleAmountOfPokemons} />}
-
       </main>
     </div >
   );

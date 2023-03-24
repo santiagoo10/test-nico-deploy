@@ -21,14 +21,16 @@ function getCharacter(i) {
   return hexaDecimalsCharacters[i];
 }
 
-export function generateNewColor() {
+export function useRandomColor() {
   let randomColorCode = "#";
 
   for (let i = 0; i < 6; i++) {
     const randomPosition = Math.floor(
       Math.random() * hexaDecimalsCharacters.length
     );
+
     randomColorCode += getCharacter(randomPosition);
   }
+
   return randomColorCode;
 }

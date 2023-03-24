@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export function useFetchGetAllPokemons() {
+export function useAllPokemons() {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
