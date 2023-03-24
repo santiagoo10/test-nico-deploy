@@ -2,10 +2,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-import { generateNewColor } from "../../randomColor/randomColor";
-import { randomPrice } from "../../randomPrice/randomPrice";
+import { useRandomColor } from "../../services/randomColor";
+import { useRandomPrice } from "../../services/randomPrice";
 
 export function HomeCards({ pokemonInfo, handleAmountOfPokemons }) {
+    //const { randomColorCode } = useRandomColor()
+    //const {randomPrice} = useRandomPrice()
 
     return (
         <>
@@ -25,7 +27,7 @@ export function HomeCards({ pokemonInfo, handleAmountOfPokemons }) {
                         style={{
                             width: "100%",
                             alignSelf: "center",
-                            backgroundColor: `${generateNewColor()}`,
+                            backgroundColor: `${useRandomColor()}`,
                             borderRadius: "10px 10px 0 0",
                         }}
                     />
@@ -37,7 +39,7 @@ export function HomeCards({ pokemonInfo, handleAmountOfPokemons }) {
                         }}
                     >
                         <Card.Title style={{ margin: "0" }}>{pokemon.name}</Card.Title>
-                        <Card.Subtitle>{`U$$ ${randomPrice()}`}</Card.Subtitle>
+                        <Card.Subtitle>{`U$$ ${useRandomPrice()}`}</Card.Subtitle>
                         <Button variant="primary">View More</Button>
                         <Button variant="warning">Buy Now</Button>
                     </Card.Body>
