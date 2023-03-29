@@ -1,6 +1,6 @@
 import Alert from 'react-bootstrap/Alert';
 
-export function ErrorAlert() {
+export function ErrorAlert({ value }) {
     return (
         <Alert
             key="danger"
@@ -8,9 +8,9 @@ export function ErrorAlert() {
             style={{
                 color: "WHITE",
                 backgroundColor: "rgba(255, 0, 0, 0.450)",
-                borderColor: 'red'
-            }}>
-            Error:
-        </Alert>
+                borderColor: 'red',
+                margin: '0',
+                textAlign: "center"
+            }}>Error: {value}</Alert>
     )
 }
