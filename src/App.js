@@ -1,16 +1,18 @@
 import "./App.css";
-import { LoginSignUp } from "./components/loginSignUp/loginSignUp";
-// import { NavBar } from "./components/navBar/navBar";
+// import { LoginSignUp } from "./components/loginSignUp/loginSignUp";
+import { NavBar } from "./components/navBar/navBar";
 // import { Home } from "./components/home/home";
-// import { Footer } from "./components/footer/footer";
+import { IndividualCards } from "./components/individualCards/individualCards";
+import { Footer } from "./components/footer/footer";
 
 function App() {
   return (
     <div className="app">
-      <LoginSignUp />
-      {/* <NavBar />
-      <Home />
-      <Footer /> */}
+      {/* <LoginSignUp /> */}
+      <NavBar />
+      {/*<Home />*/}
+      <IndividualCards />
+      <Footer />
     </div>
   );
 }
