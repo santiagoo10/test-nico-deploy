@@ -46,7 +46,7 @@ export function Home() {
       <SearchFilters handleSearchBar={handleSearchBar} handleAZfilterSelect={handleAZfilterSelect} />
 
       <main>
-        {error ? <ErrorAlert>{error}</ErrorAlert> : null}
+        {error ? <ErrorAlert value={error} /> : null}
 
         {loading ? <Spinner /> : null}
 
@@ -54,7 +54,8 @@ export function Home() {
           :
           selectFilterResults ? <SelectFilterCards selectFilterResults={selectFilterResults} />
             :
-            <HomeCards pokemonInfo={pokemonInfo} handleAmountOfPokemons={handleAmountOfPokemons} />}
+            pokemonInfo ? <HomeCards pokemonInfo={pokemonInfo} handleAmountOfPokemons={handleAmountOfPokemons} />
+              : <ErrorAlert value={"Unexpected error"} />}
       </main>
     </div >
   );
