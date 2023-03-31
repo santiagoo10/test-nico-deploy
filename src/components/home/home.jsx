@@ -2,15 +2,13 @@ import "./home.css";
 import { usePokemons } from "../../services/pokemons";
 import { useAllPokemons } from "../../services/allPokemons";
 
+import { useState } from "react";
+
 import { Header } from "../header/header";
 import { SearchFilters } from "../searchFilters/searchFilters";
 import { ErrorAlert } from "../error/error";
 import { Spinner } from "../spinner/spinner";
 import { HomeCards } from "../cards/homeCards";
-import { SearchBarCards } from "../cards/searchBarCards";
-import { SelectFilterCards } from "../cards/selectFilterCards";
-
-import { useState } from "react";
 
 export function Home() {
   const [searchBar, setSearchBar] = useState(null)
@@ -22,7 +20,8 @@ export function Home() {
 
   function handleSearchBar(e) {
     setSearchBar(e.target.value)
-    setSearchBarResults(pokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(searchBar)))
+    setSearchBarResults(pokemons.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchBar)))
   }
 
   function handleAZfilterSelect(e) {
@@ -50,11 +49,9 @@ export function Home() {
 
         {loading ? <Spinner /> : null}
 
-        {searchBar ? <SearchBarCards searchBarResults={searchBarResults} />
-          :
-          selectFilterResults ? <SelectFilterCards selectFilterResults={selectFilterResults} />
-            :
-            pokemonInfo ? <HomeCards pokemonInfo={pokemonInfo} handleAmountOfPokemons={handleAmountOfPokemons} />
+        {searchBar ? <HomeCards pokemonInfo={searchBarResults} />
+          : selectFilterResults ? <HomeCards pokemonInfo={selectFilterResults} />
+            : pokemonInfo ? <HomeCards pokemonInfo={pokemonInfo} handleAmountOfPokemons={handleAmountOfPokemons} />
               : <ErrorAlert value={"Unexpected error"} />}
       </main>
     </div >

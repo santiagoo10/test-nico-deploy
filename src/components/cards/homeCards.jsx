@@ -10,7 +10,7 @@ export function HomeCards({ pokemonInfo, handleAmountOfPokemons }) {
     //const {randomPrice} = useRandomPrice()
 
     return (
-        <>
+        <main>
             {pokemonInfo?.map((pokemon) => (
                 <Card
                     style={{
@@ -47,6 +47,6 @@ export function HomeCards({ pokemonInfo, handleAmountOfPokemons }) {
             ))}
 
             <Button variant="info" onClick={handleAmountOfPokemons}>Load More</Button>
-        </>
+        </main>
     )
 }
