@@ -49,11 +49,17 @@ export function usePokemons() {
   //   }
   // }
 
-  return [
-    pokemonInfo,
+  const mappedPokemonInfo = pokemonInfo?.map((pokemon) => ({
+    id: pokemon.id,
+    img: pokemon.sprites.front_default,
+    name: pokemon.name,
+  }));
+
+  return {
+    pokemonInfo: mappedPokemonInfo,
     loading,
     error,
     handleAmountOfPokemons,
     // handleAbortRequest,
-  ];
+  };
 }
