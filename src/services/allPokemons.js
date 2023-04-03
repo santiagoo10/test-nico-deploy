@@ -23,5 +23,11 @@ export function useAllPokemons() {
       .finally(() => setLoading(false));
   }, []);
 
-  return { error, loading, pokemons };
+  const mappedAllPokemons = pokemons?.map((pokemon) => ({
+    id: pokemon.id,
+    img: pokemon.sprites.front_default,
+    name: pokemon.name,
+  }));
+
+  return { error, loading, pokemons: mappedAllPokemons };
 }

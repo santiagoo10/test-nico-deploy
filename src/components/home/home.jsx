@@ -15,7 +15,7 @@ export function Home() {
   const [searchBarResults, setSearchBarResults] = useState(null)
   const [selectFilterResults, setSelectFilterResults] = useState(null)
 
-  const [pokemonInfo, loading, error, handleAmountOfPokemons] = usePokemons();
+  const { pokemonInfo, loading, error, handleAmountOfPokemons } = usePokemons();
   const { pokemons } = useAllPokemons()
 
   function handleSearchBar(e) {

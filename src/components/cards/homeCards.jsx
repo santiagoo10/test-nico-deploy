@@ -23,7 +23,7 @@ export function HomeCards({ pokemonInfo, handleAmountOfPokemons }) {
                 >
                     <Card.Img
                         variant="top"
-                        src={pokemon.sprites.front_default}
+                        src={pokemon.img}
                         style={{
                             width: "100%",
                             alignSelf: "center",
