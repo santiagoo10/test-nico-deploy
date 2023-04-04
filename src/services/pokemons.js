@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 export function usePokemons() {
   const [limit, setLimit] = useState(20);
-  const [pokemonInfo, setPokemonInfo] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [pokemonInfo, setPokemonInfo] = useState(null);
+  const [pokemonsLoading, setPokemonsLoading] = useState(false);
+  const [pokemonsError, setPokemonsError] = useState(null);
   // const [controller, setController] = useState(null);
 
   const pokeApiUrl = `https://pokeapi.co/api/v2/pokemon/?limit=${limit}&offset=0`;
@@ -13,7 +13,7 @@ export function usePokemons() {
 
   useEffect(() => {
     // setController(abortController);
-    setLoading(true);
+    setPokemonsLoading(true);
 
     // fetch(pokeApiUrl, { signal: abortController.signal })
     fetch(pokeApiUrl)
@@ -29,17 +29,17 @@ export function usePokemons() {
         // if (err.name === "AbortError") {
         //   setError("Request cancelled");
         // }
-        setError(err);
+        setPokemonsError(err);
       })
-      .finally(() => setLoading(false));
+      .finally(() => setPokemonsLoading(false));
 
     // return () => abortController.abort();
   }, [limit]);
 
   function handleAmountOfPokemons() {
-    setLoading(true);
+    setPokemonsLoading(true);
     setLimit(limit + 20);
-    setLoading(false);
+    setPokemonsLoading(false);
   }
 
   // function handleAbortRequest() {
@@ -57,8 +57,8 @@ export function usePokemons() {
 
   return {
     pokemonInfo: mappedPokemonInfo,
-    loading,
-    error,
+    pokemonsLoading,
+    pokemonsError,
     handleAmountOfPokemons,
     // handleAbortRequest,
   };
