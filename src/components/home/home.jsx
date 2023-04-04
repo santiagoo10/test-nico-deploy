@@ -12,11 +12,14 @@ import { HomeCards } from "../cards/homeCards";
 
 export function Home() {
   const [searchBar, setSearchBar] = useState(null)
+  // eslint-disable-next-line no-unused-vars
   const [searchBarResults, setSearchBarResults] = useState(null)
+  // eslint-disable-next-line no-unused-vars
   const [selectFilterResults, setSelectFilterResults] = useState(null)
 
-  const { pokemonInfo, loading, error, handleAmountOfPokemons } = usePokemons();
-  const { pokemons } = useAllPokemons()
+  const { pokemonInfo, pokemonsLoading, pokemonsError, handleAmountOfPokemons } = usePokemons();
+  // eslint-disable-next-line no-unused-vars
+  const { pokemons, allPokemonsLoading, allPokemonsError } = useAllPokemons()
 
   function handleSearchBar(e) {
     setSearchBar(e.target.value)
@@ -42,17 +45,19 @@ export function Home() {
   return (
     <div className="home">
       <Header />
+
       <SearchFilters handleSearchBar={handleSearchBar} handleAZfilterSelect={handleAZfilterSelect} />
 
       <main>
-        {error ? <ErrorAlert value={error} /> : null}
+        {pokemonsError ? <ErrorAlert errorValue={pokemonsError} />
+          : allPokemonsError ? <ErrorAlert errorValue={allPokemonsError} /> : null}
 
-        {loading ? <Spinner /> : null}
+        {pokemonsLoading ? <Spinner /> : allPokemonsLoading ? <Spinner /> : null}
 
         {searchBar ? <HomeCards pokemonInfo={searchBarResults} />
           : selectFilterResults ? <HomeCards pokemonInfo={selectFilterResults} />
             : pokemonInfo ? <HomeCards pokemonInfo={pokemonInfo} handleAmountOfPokemons={handleAmountOfPokemons} />
-              : <ErrorAlert value={"Unexpected error"} />}
+              : <ErrorAlert errorValue={"Unexpected error"} />}
       </main>
     </div >
   );
