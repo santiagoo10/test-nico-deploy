@@ -4,10 +4,10 @@ export function SearchFilters({ handleSearchBar, handleAZfilterSelect }) {
 
     return (
         <div className="inputsContainer">
-            <label className="searchBar">
-                <input name="searchBar" placeholder="Pikachu, Dito" onInput={handleSearchBar} />
-                <img src="/images/lupa.png" alt="magnifying glass" />
-            </label>
+            <form className="searchBar">
+                <input name="searchBar" placeholder="Pikachu, Dito, ..." onInput={handleSearchBar} required />
+                <button><img src="/images/lupa.png" alt="magnifying glass" /></button>
+            </form>
 
             <label className="filter">
                 <select name="filter" onChange={handleAZfilterSelect}>
