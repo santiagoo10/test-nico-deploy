@@ -24,17 +24,34 @@
   width: 100%;
   height: 100%;
   border: none;
-  border-right: 1px solid gray;
   padding: 0 5px;
   color: white;
   background-color: transparent;
 }
 
-.searchBar img {
+.searchBar button {
   width: 20px;
   margin: 5px;
-  padding: 1px;
   align-self: center;
+  background-color: transparent;
+  border: none;
+}
+
+.searchBar button img {
+  width: 100%;
+}
+
+.searchBar input:focus,
+.filter select:focus {
+  outline: none;
+}
+
+.searchBar:hover,
+.searchBar:focus-within,
+.filter:hover,
+.filter:focus-within {
+  border: 1px solid rgb(255, 230, 0);
+  border-radius: 7px;
 }
 
 .filter select {
@@ -50,4 +67,10 @@
 .filter select option {
   background-color: rgb(24, 26, 27);
   text-overflow: ellipsis;
+}
+
+/* Not working */
+.filter select option:nth-child(*):hover {
+  background: rgb(255, 230, 0);
+  color: black;
 }
