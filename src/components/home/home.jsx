@@ -21,32 +21,11 @@ export function Home() {
   // eslint-disable-next-line no-unused-vars
   const { pokemons, allPokemonsLoading, allPokemonsError } = useAllPokemons()
 
-  function handleSearchBar(e) {
-    setSearchBar(e.target.value)
-    setSearchBarResults(pokemons.filter((pokemon) =>
-      pokemon.name.toLowerCase().includes(searchBar)))
-  }
-
-  function handleAZfilterSelect(e) {
-    const optionValue = e.target.value;
-    { if (optionValue === "a-z") setSelectFilterResults(pokemons.sort(handleNamesOrder)) }
-  }
-
-  function handleNamesOrder(a, b) {
-    if (a.name < b.name) {
-      return -1;
-    }
-    if (a.name > b.name) {
-      return 1;
-    }
-    return 0;
-  }
-
   return (
     <div className="home">
       <Header />
 
-      <SearchFilters handleSearchBar={handleSearchBar} handleAZfilterSelect={handleAZfilterSelect} />
+      <SearchFilters pokemons={pokemons} searchBar={searchBar} setSearchBar={setSearchBar} setSearchBarResults={setSearchBarResults} setSelectFilterResults={setSelectFilterResults} />
 
       <main>
         {pokemonsError ? <ErrorAlert errorValue={pokemonsError} />
