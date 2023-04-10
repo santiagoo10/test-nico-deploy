@@ -6,10 +6,10 @@ export function ErrorAlert({ errorValue }) {
             key="danger"
             variant="danger"
             style={{
-                color: "WHITE",
+                color: "white",
                 backgroundColor: "rgba(255, 0, 0, 0.450)",
                 borderColor: 'red',
-                margin: '0',
+                margin: '20px',
                 textAlign: "center"
             }}>Error: {errorValue}</Alert>
     )

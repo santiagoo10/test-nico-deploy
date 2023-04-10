@@ -51,7 +51,7 @@ export function usePokemons() {
 
   const mappedPokemonInfo = pokemonInfo?.map((pokemon) => ({
     id: pokemon.id,
-    img: pokemon.sprites.front_default,
+    img: pokemon.sprites.other.dream_world.front_default,
     name: pokemon.name,
   }));
 
