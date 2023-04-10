@@ -1,6 +1,26 @@
 import "./searchFilters.css"
 
-export function SearchFilters({ handleSearchBar, handleAZfilterSelect }) {
+export function SearchFilters({ pokemons, searchBar, setSearchBar, setSearchBarResults, setSelectFilterResults }) {
+
+    function handleSearchBar(e) {
+        setSearchBar(e.target.value)
+        setSearchBarResults(pokemons.filter((pokemon) => pokemon.name.toLowerCase().includes(searchBar)))
+    }
+
+    function handleAZfilterSelect(e) {
+        const optionValue = e.target.value;
+        { if (optionValue === "a-z") setSelectFilterResults(pokemons.sort(handleNamesOrder)) }
+    }
+
+    function handleNamesOrder(a, b) {
+        if (a.name < b.name) {
+            return -1;
+        }
+        if (a.name > b.name) {
+            return 1;
+        }
+        return 0;
+    }
 
     return (
         <div className="inputsContainer">
