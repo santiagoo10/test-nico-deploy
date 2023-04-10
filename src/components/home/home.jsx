@@ -8,7 +8,7 @@ import { Header } from "../header/header";
 import { SearchFilters } from "../searchFilters/searchFilters";
 import { ErrorAlert } from "../error/error";
 import { Spinner } from "../spinner/spinner";
-import { HomeCards } from "../cards/homeCards";
+import { HomeCards } from "../cards/cards";
 
 export function Home() {
   const [searchBar, setSearchBar] = useState(null)
@@ -27,17 +27,15 @@ export function Home() {
 
       <SearchFilters pokemons={pokemons} searchBar={searchBar} setSearchBar={setSearchBar} setSearchBarResults={setSearchBarResults} setSelectFilterResults={setSelectFilterResults} />
 
-      <main>
-        {pokemonsError ? <ErrorAlert errorValue={pokemonsError} />
-          : allPokemonsError ? <ErrorAlert errorValue={allPokemonsError} /> : null}
+      {pokemonsError ? <ErrorAlert errorValue={pokemonsError} />
+        : allPokemonsError ? <ErrorAlert errorValue={allPokemonsError} /> : null}
 
-        {pokemonsLoading ? <Spinner /> : allPokemonsLoading ? <Spinner /> : null}
+      {pokemonsLoading ? <Spinner /> : allPokemonsLoading ? <Spinner /> : null}
 
-        {searchBar ? <HomeCards pokemonInfo={searchBarResults} />
-          : selectFilterResults ? <HomeCards pokemonInfo={selectFilterResults} />
-            : pokemonInfo ? <HomeCards pokemonInfo={pokemonInfo} handleAmountOfPokemons={handleAmountOfPokemons} />
-              : <ErrorAlert errorValue={"Unexpected error"} />}
-      </main>
+      {searchBar ? <HomeCards pokemonInfo={searchBarResults} />
+        : selectFilterResults ? <HomeCards pokemonInfo={selectFilterResults} />
+          : pokemonInfo ? <HomeCards pokemonInfo={pokemonInfo} handleAmountOfPokemons={handleAmountOfPokemons} />
+            : <ErrorAlert errorValue={"Something is wrong..."} />}
     </div >
   );
 }
