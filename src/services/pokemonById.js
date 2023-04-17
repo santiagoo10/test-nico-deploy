@@ -1,3 +1,7 @@
+// Not working when pass the route img.
+// The individualCrads.jsx component recieve the pokemonByI object,
+// but when I tried to read the img on card component, the app crash.
+
 import { useEffect, useState } from "react";
 
 export function usePokemonId(id) {
@@ -7,7 +11,6 @@ export function usePokemonId(id) {
 
   useEffect(() => {
     setPokemonByIdLoading(true);
-
     fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
       .then((res) => res.json())
       .then((data) => setPokemonById(data))
@@ -15,16 +18,19 @@ export function usePokemonId(id) {
       .finally(() => setPokemonByIdLoading(false));
   }, []);
 
-  //   const mappedPokemonById = pokemonById?.map((pokemon) => ({
-  //     id: pokemon.id,
-  //     img: pokemon.sprites.other.dream_world.front_default,
-  //     name: pokemon.name,
-  //     abilities: pokemon.abilities,
-  //     moves: pokemon.moves,
-  //     types: pokemon.types,
-  //     weight: pokemon.weight,
-  //     stats: pokemon.stats,
-  //   }));
+  const mappedPokemonById = {
+    id: pokemonById.id,
+    img: pokemonById.sprites.other.dream_world.front_default,
+    name: pokemonById.name,
+    abilities: pokemonById.abilities,
+    types: pokemonById.types,
+    weight: pokemonById.wight,
+    stats: pokemonById.stats,
+  };
 
-  return { pokemonById, pokemonByIdLoading, pokemonByIdError };
+  return {
+    pokemonById: mappedPokemonById,
+    pokemonByIdLoading,
+    pokemonByIdError,
+  };
 }
