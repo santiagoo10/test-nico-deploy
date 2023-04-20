@@ -1,4 +1,4 @@
-import "./home.css";
+import "./cardsLayout.css";
 import { usePokemons } from "../../services/pokemons";
 import { useAllPokemons } from "../../services/allPokemons";
 
@@ -10,7 +10,7 @@ import { ErrorAlert } from "../error/error";
 import { Spinner } from "../spinner/spinner";
 import { HomeCards } from "../cards/cards";
 
-export function Home() {
+export function CardsLayout() {
   const [searchBar, setSearchBar] = useState(null)
   // eslint-disable-next-line no-unused-vars
   const [searchBarResults, setSearchBarResults] = useState(null)
@@ -22,7 +22,7 @@ export function Home() {
   const { pokemons, allPokemonsLoading, allPokemonsError } = useAllPokemons()
 
   return (
-    <div className="home">
+    <div className="cardsLayout">
       <Header />
 
       <SearchFilters pokemons={pokemons} searchBar={searchBar} setSearchBar={setSearchBar} setSearchBarResults={setSearchBarResults} setSelectFilterResults={setSelectFilterResults} />
@@ -34,8 +34,8 @@ export function Home() {
 
       {searchBar ? <HomeCards pokemonInfo={searchBarResults} />
         : selectFilterResults ? <HomeCards pokemonInfo={selectFilterResults} />
-          : pokemonInfo ? <HomeCards pokemonInfo={pokemonInfo} handleAmountOfPokemons={handleAmountOfPokemons} />
-            : <ErrorAlert errorValue={"Something is wrong..."} />}
+          : pokemonInfo ? <HomeCards pokemonInfo={pokemonInfo} handleAmountOfPokemons={handleAmountOfPokemons} /> : null}
+
     </div >
   );
 }
