@@ -1,14 +1,14 @@
-import "./loginSignUp.css"
+import "../components/loginSignUp/loginSignUp.css"
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 
-import { Login } from "./login-signUp/login";
-import { SignUp } from "./login-signUp/signUp";
+import { Login } from "../components/loginSignUp/login";
+import { SignUp } from "../components/loginSignUp/signUp";
 
 import { useState } from "react";
 
-export function LoginSignUp() {
+export function LoginSignUpPage() {
     const [buttonSelected, setfButtonSelected] = useState(null)
 
     function handleButton(e) {
@@ -17,7 +17,7 @@ export function LoginSignUp() {
     }
 
     return (
-        <main>
+        <main style={{ padding: "0" }}>
             <img src="/images/pikachu.png" alt="Pikachu standing with a thinking look " className="backgroundImage" />
             <section>
                 <div className="logo-h1">
