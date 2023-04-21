@@ -12,6 +12,7 @@ import Button from "react-bootstrap/Button";
 
 import { ErrorAlert } from '../error/error';
 import { Spinner } from '../spinner/spinner';
+import { PopUpToyBuy } from '../popUps/popUpToBuy/popUpToBuy';
 
 // import { usePokemonId } from '../../services/pokemonById';
 import { useRandomColor } from "../../services/randomColor";
@@ -23,6 +24,8 @@ export function IndividualCards() {
     const [pokemonById, setPokemonById] = useState(null);
     const [pokemonByIdLoading, setPokemonByIdLoading] = useState(false);
     const [pokemonByIdError, setPokemonByIdError] = useState(null);
+
+    const [openPopUp, setOpenPopUp] = useState(false)
 
     // eslint-disable-next-line no-unused-vars
     function usePokemonId(id) {
@@ -127,11 +130,14 @@ export function IndividualCards() {
                             </ListGroup>
                         </Card>
 
-                        <Button variant="warning" style={{
+                        <Button onClick={() => setOpenPopUp(true)} variant="warning" style={{
                             width: "100%",
                             position: "sticky",
                             bottom: "0"
                         }}>Buy Now</Button>
+
+                        <PopUpToyBuy show={openPopUp} onHide={() => setOpenPopUp(false)} />
+
                     </main > : "404"}
         </div>
     );

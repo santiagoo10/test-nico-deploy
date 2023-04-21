@@ -51,7 +51,7 @@ export function HomeCards({ pokemonInfo, handleAmountOfPokemons }) {
                         <Link to={`/pokemonft/${pokemon.id}`}>
                             <Button variant="outline-primary">View More</Button>
                         </Link>
-                        <Button variant="warning">Buy Now</Button>
+                        {/* <Button variant="warning">Buy Now</Button> */}
                     </Card.Body>
                 </Card>
             ))
