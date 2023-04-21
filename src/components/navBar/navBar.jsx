@@ -2,12 +2,14 @@ import "./navBar.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from 'react-bootstrap/Dropdown';
+import { Link } from "react-router-dom";
 
 export function NavBar() {
   return (
     <nav>
-      <img src="/images/pokeball.png" alt="Pokeball" />
-
+      <Link to={"/home"}>
+        <img src="/images/pokeball.png" alt="Pokeball" />
+      </Link>
       <Dropdown>
         <Dropdown.Toggle variant="outline-danger" id="dropdown-basic">
           User Name
