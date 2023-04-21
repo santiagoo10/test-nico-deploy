@@ -46,7 +46,7 @@ export function HomeCards({ pokemonInfo, handleAmountOfPokemons }) {
                         }}
                     >
                         <Card.Title style={{ margin: "0", textTransform: "capitalize" }}>{pokemon.name}</Card.Title>
-                        <Card.Subtitle>{`U$$ ${useRandomPrice()}`}</Card.Subtitle>
+                        <Card.Subtitle>{`USD ${useRandomPrice()}`}</Card.Subtitle>
 
                         <Link to={`/pokemonft/${pokemon.id}`}>
                             <Button variant="outline-primary">View More</Button>
