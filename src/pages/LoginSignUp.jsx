@@ -22,7 +22,7 @@ export function LoginSignUpPage() {
             <section>
                 <div className="logo-h1">
                     <img src="/images/pokemon.png" alt="" />
-                    <h1>NFT</h1>
+                    <h1>Pokemon Ft</h1>
                 </div>
 
                 <div className="buttons">
