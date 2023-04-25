@@ -3,64 +3,60 @@ import Button from "react-bootstrap/Button";
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 
-import { auth } from "../../firebase-config";
-import {
-    onAuthStateChanged,
-    signInWithEmailAndPassword,
-} from "firebase/auth";
-
-import { useState } from "react";
 import { ErrorAlert } from "../error/error";
 
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { useFirebaseContext } from "../../firebase/firebaseContext";
+
 export function Login() {
-    const [emailInputValue, setEmailInputValue] = useState("")
-    const [passwordInputValue, setPasswordInputValue] = useState("")
-
-    // eslint-disable-next-line no-unused-vars
-    const [userEmail, setUserEmail] = useState(null)
-    const [signUpError, setSignUpError] = useState(null)
-    // eslint-disable-next-line no-unused-vars
-    const [loggedUser, setLoggedUser] = useState({})
-
-    onAuthStateChanged(auth, (currentUser) => {
-        setLoggedUser(currentUser)
+    const [userData, setUserData] = useState({
+        email: "",
+        password: ""
     })
+    const [loginError, setLoginError] = useState(null)
 
-    function logIn(e) {
+    const { login } = useFirebaseContext()
+
+    const navigate = useNavigate()
+
+    const handleInputValue = ({ target: { name, value } }) => {
+        setUserData({ ...userData, [name]: value });
+    }
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        signInWithEmailAndPassword(auth, emailInputValue, passwordInputValue)
-            .then((userData) => {
-                const user = userData.user;
-                setUserEmail(user.email);
-                if (userData) console.log('logIn succesfully');
-            })
-            .catch((error) => {
-                console.log(error);
-                if (error.code === "auth/user-not-found") { setSignUpError("User not found") } else
-                    if (error.code === "auth/wrong-password") { setSignUpError("Wrong password") } else
-                        if (error.code) setSignUpError("Something is wrong")
-            });
+
+        try {
+            await login(userData.email, userData.password)
+            navigate('/home')
+        } catch (error) {
+            if (error.code === "auth/user-not-found") { setLoginError("User not found") } else
+                if (error.code === "wrong-password") { setLoginError("Invalid password") } else
+                    if (error.code) setLoginError("Something is wrong")
+        }
     }
 
     return (
         <>
             <h2>Login</h2>
 
-            <Form onSubmit={logIn} style={{ display: "flex", flexDirection: "column" }}>
+            <Form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
                 <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
-                    <Form.Control type="email" name="email" placeholder="name@example.com" required onChange={(e) => setEmailInputValue(e.target.value)} />
+                    <Form.Control type="email" name="email" placeholder="name@example.com" required onChange={handleInputValue} />
                 </FloatingLabel>
 
                 <FloatingLabel controlId="floatingPassword" label="Password">
-                    <Form.Control type="password" name="password" placeholder="Password" required onChange={(e) => setPasswordInputValue(e.target.value)} />
+                    <Form.Control type="password" name="password" placeholder="Password" required onChange={handleInputValue} />
                 </FloatingLabel>
 
                 <Button variant="primary" type="submit" style={{ alignSelf: "center", marginTop: "15px" }}>
-                    Submit
+                    Login
                 </Button>
             </Form>
 
-            {signUpError ? <ErrorAlert value={signUpError} /> : null}
+            {loginError ? <ErrorAlert errorValue={loginError} /> : null}
         </>
     )
 }
