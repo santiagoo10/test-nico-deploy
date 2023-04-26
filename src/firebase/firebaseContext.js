@@ -1,10 +1,11 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 import { auth } from "../firebase/firebase-config";
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signOut,
 } from "firebase/auth";
 
 const firebaseContext = createContext();
@@ -16,33 +17,33 @@ export const useFirebaseContext = () => {
 
 export function FirebaseProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
+  const [firebaseLoading, setFirebaseLoading] = useState(false);
 
-  const signUp = (email, password) => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // eslint-disable-next-line no-unused-vars
-        const user = userCredential.user;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+  const signUp = (email, password) =>
+    createUserWithEmailAndPassword(auth, email, password);
+
+  const login = (email, password) =>
+    signInWithEmailAndPassword(auth, email, password);
+
+  const logOut = () => {
+    signOut(auth);
+    setFirebaseLoading(false);
   };
 
-  const login = (email, password) => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // eslint-disable-next-line no-unused-vars
-        const user = userCredential.user;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  useEffect(() => {
+    const unsuscribe = onAuthStateChanged(auth, (currentUser) => {
+      setFirebaseLoading(true);
+      setCurrentUser(currentUser);
+      setFirebaseLoading(false);
+    });
 
-  onAuthStateChanged(auth, (currentUser) => setCurrentUser(currentUser));
+    return () => unsuscribe();
+  }, []);
 
   return (
-    <firebaseContext.Provider value={{ signUp, login, currentUser }}>
+    <firebaseContext.Provider
+      value={{ signUp, login, currentUser, logOut, firebaseLoading }}
+    >
       {children}
     </firebaseContext.Provider>
   );

@@ -16,3 +16,7 @@ nav img {
 nav img:hover {
   transform: rotate(22.5deg);
 }
+
+.dropdownItem:hover {
+  background-color: rgb(43, 43, 43);
+}

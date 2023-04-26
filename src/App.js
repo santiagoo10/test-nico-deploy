@@ -8,6 +8,7 @@ import { IndividualCardPage } from "./pages/IndividualCardPage";
 import { ErrorPage } from "./pages/ErrorPage";
 
 import { FirebaseProvider } from "./firebase/firebaseContext";
+import { ProtectedRoutes } from "./components/protectedRoutes";
 
 function App() {
   return (
@@ -15,8 +16,22 @@ function App() {
       <FirebaseProvider>
         <Routes>
           <Route path="/" element={<LoginSignUpPage />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/pokemonft/:id" element={<IndividualCardPage />} />
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoutes>
+                <HomePage />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            path="/pokemonft/:id"
+            element={
+              <ProtectedRoutes>
+                <IndividualCardPage />
+              </ProtectedRoutes>
+            }
+          />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </FirebaseProvider>
