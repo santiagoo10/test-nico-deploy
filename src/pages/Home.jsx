@@ -1,13 +1,24 @@
 import { NavBar } from "../components/navBar/navBar";
 import { CardsLayout } from "../components/cardsLayout/cardsLayout";
 import { Footer } from "../components/footer/footer";
+import { Spinner } from "../components/spinner/spinner";
+
+import { useFirebaseContext } from "../firebase/firebaseContext";
 
 export function HomePage() {
+    const { logOut, firebaseLoading } = useFirebaseContext()
+
+    const handleLogOut = async () => await logOut()
+
     return (
-        <div style={{ maxWidth: "100vw", minHeight: "100vh" }}>
-            <NavBar />
-            <CardsLayout />
-            <Footer />
-        </div>
+        <>
+            {firebaseLoading ? <Spinner /> :
+                <div style={{ maxWidth: "100vw", minHeight: "100vh" }}>
+                    <NavBar handleLogOut={handleLogOut} />
+                    <CardsLayout />
+                    <Footer />
+                </div>
+            }
+        </>
     )
 }

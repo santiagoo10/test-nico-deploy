@@ -13,7 +13,6 @@ import { useFirebaseContext } from "../../firebase/firebaseContext";
 export function SignUp() {
     const [userData, setUserData] = useState({
         email: "",
-        userName: "",
         password: ""
     })
     const [signUpError, setSignUpError] = useState(null)
@@ -48,10 +47,6 @@ export function SignUp() {
             <Form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
                 <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
                     <Form.Control type="email" name="email" placeholder="name@example.com" required onChange={handleInputValue} />
-                </FloatingLabel>
-
-                <FloatingLabel controlId="floatingName" label="User" className="mb-3">
-                    <Form.Control type="text" name="userName" placeholder="User Name" required onChange={handleInputValue} />
                 </FloatingLabel>
 
                 <FloatingLabel controlId="floatingPassword" label="Password">
