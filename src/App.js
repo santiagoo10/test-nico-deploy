@@ -9,6 +9,8 @@ import { ErrorPage } from "./pages/ErrorPage";
 
 import { FirebaseProvider } from "./firebase/firebaseContext";
 import { ProtectedRoutes } from "./components/protectedRoutes";
+import { SignUp } from "./components/loginSignUp/signUp";
+import { Login } from "./components/loginSignUp/login";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
       <FirebaseProvider>
         <Routes>
           <Route path="/" element={<LoginSignUpPage />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/login" element={<Login />} />
           <Route
             path="/home"
             element={
