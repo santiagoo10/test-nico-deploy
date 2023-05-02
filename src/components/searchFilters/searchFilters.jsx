@@ -1,5 +1,3 @@
-import "./searchFilters.css"
-
 export function SearchFilters({ pokemons, searchBar, setSearchBar, setSearchBarResults, setSelectFilterResults }) {
 
     function handleSearchBar(e) {
@@ -23,10 +21,12 @@ export function SearchFilters({ pokemons, searchBar, setSearchBar, setSearchBarR
     }
 
     return (
-        <div className="inputsContainer">
+        <div className="inputs-container">
             <form className="searchBar">
                 <input name="searchBar" placeholder="Pikachu, Dito, ..." onInput={handleSearchBar} required />
-                <button><img src="/images/lupa.png" alt="magnifying glass" /></button>
+                <button>
+                    <img src="/images/lupa.png" alt="magnifying glass" />
+                </button>
             </form>
 
             <label className="filter">

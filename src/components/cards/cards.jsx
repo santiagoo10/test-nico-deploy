@@ -1,5 +1,3 @@
-import './cards.css'
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -17,36 +15,18 @@ export function HomeCards({ pokemonInfo, handleAmountOfPokemons }) {
 
         <main className="cards">
             {pokemonInfo?.map((pokemon) => (
-                <Card
-                    style={{
-                        width: "100%",
-                        backgroundColor: "rgb(39, 43, 44)",
-                        color: "white",
-                        borderRadius: "10px",
-                    }}
-                    key={pokemon.id}
-                >
+                <Card key={pokemon.id}>
                     <Card.Img
                         variant="top"
                         src={pokemon.img}
                         alt={`Image of ${pokemon.name}`}
-                        style={{
-                            width: "100%",
-                            alignSelf: "center",
-                            backgroundColor: `${useRandomColor()}`,
-                            borderRadius: "10px 10px 0 0",
-                            padding: "25px"
-                        }}
+                        style={{ backgroundColor: `${useRandomColor()}` }}
                     />
-                    <Card.Body
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            rowGap: "20px",
-                        }}
-                    >
-                        <Card.Title style={{ margin: "0", textTransform: "capitalize" }}>{pokemon.name}</Card.Title>
-                        <Card.Subtitle>{`USD ${useRandomPrice()}`}</Card.Subtitle>
+                    <Card.Body>
+                        <div className="cards-titleSubtitle-container">
+                            <Card.Title style={{ margin: "0", textTransform: "capitalize" }}>{pokemon.name}</Card.Title>
+                            <Card.Subtitle>{`USD ${useRandomPrice()}`}</Card.Subtitle>
+                        </div>
 
                         <Link to={`/pokemonft/${pokemon.id}`}>
                             <Button variant="outline-primary">View More</Button>
@@ -57,7 +37,7 @@ export function HomeCards({ pokemonInfo, handleAmountOfPokemons }) {
             ))
             }
 
-            <Button variant="outline-warning" style={{ marginBottom: "10px" }} onClick={handleAmountOfPokemons}>Load More</Button>
+            <Button variant="outline-warning" onClick={handleAmountOfPokemons}>Load More</Button>
 
             {/* <Outlet /> */}
         </main >

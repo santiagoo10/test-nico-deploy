@@ -39,24 +39,31 @@ export function Login() {
     }
 
     return (
-        <>
-            <h2>Login</h2>
+        <main className="login-container">
+            <img src="/images/pikachu.png" alt="Pikachu standing with a thinking look " className="signUpLogin-backgroundImage" />
 
-            <Form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
-                <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
-                    <Form.Control type="email" name="email" placeholder="name@example.com" required onChange={handleInputValue} />
-                </FloatingLabel>
+            <section className="login-section">
+                <div className="signUpLogin-section-logo">
+                    <img src="/images/pokemon.png" alt="Pokemon logo" />
+                    <h1>Login</h1>
+                </div>
 
-                <FloatingLabel controlId="floatingPassword" label="Password">
-                    <Form.Control type="password" name="password" placeholder="Password" required onChange={handleInputValue} />
-                </FloatingLabel>
+                <Form onSubmit={handleSubmit} className="signUpLoginForm">
+                    <FloatingLabel controlId="floatingInput" label="Email address" className="mb-3">
+                        <Form.Control type="email" name="email" placeholder="name@example.com" required onChange={handleInputValue} />
+                    </FloatingLabel>
 
-                <Button variant="primary" type="submit" style={{ alignSelf: "center", marginTop: "15px" }}>
-                    Login
-                </Button>
-            </Form>
+                    <FloatingLabel controlId="floatingPassword" label="Password">
+                        <Form.Control type="password" name="password" placeholder="Password" required onChange={handleInputValue} />
+                    </FloatingLabel>
 
-            {loginError ? <ErrorAlert errorValue={loginError} /> : null}
-        </>
+                    <Button variant="primary" type="submit" style={{ alignSelf: "center", marginTop: "15px" }}>
+                        Login
+                    </Button>
+                </Form>
+
+                {loginError ? <ErrorAlert errorValue={loginError} /> : null}
+            </section>
+        </main>
     )
 }
