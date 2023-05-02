@@ -1,5 +1,273 @@
+:root {
+  --width-100vw: 100vw;
+  --heighh-100vh: 100vh;
+  --width-100Percent: 100%;
+  --heighh-100Percent: 100%;
+  --background-color: rgb(24, 26, 27);
+}
+
 .app {
-  background-color: rgb(24, 26, 27);
-  min-height: 100vh;
-  max-width: 100vw;
+  /* background-color: rgb(24, 26, 27); */
+  max-width: var(--width-100vw);
+  min-height: var(--heighh-100vh);
+
+  font-family: "Nunito", sans-serif;
+}
+
+/* Sign Up and Login Styles */
+@import url("https://fonts.googleapis.com/css2?family=Candal&display=swap");
+
+.signUpLogin-container,
+.signUp-container,
+.login-container {
+  width: var(--width-100Percent);
+  height: var(--heighh-100vh);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  position: relative;
+}
+
+.signUpLogin-backgroundImage {
+  width: var(--width-100Percent);
+  height: var(--heighh-100Percent);
+  object-fit: cover;
+}
+
+.signUpLogin-section,
+.signUp-section,
+.login-section {
+  max-width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.774);
+  border-radius: 24px;
+  padding: 24px;
+}
+
+.signUpLogin-section-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.signUpLogin-section-logo img {
+  width: 100px;
+}
+
+.signUpLogin-section-logo h1,
+.signUp-section h1,
+.login-section h1 {
+  font-family: "Candal", sans-serif;
+  margin: 0;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  font-style: italic;
+  text-align: center;
+  /* color: rgb(255, 238, 0);
+  text-shadow: 5px 2.5px 1px black; */
+}
+
+.signUp-section h1,
+.login-section h1 {
+  font-style: normal;
+  font-weight: 400;
+}
+
+.signUpLogin-section-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.signUpLoginForm input {
+  background-color: rgba(255, 255, 255, 0.432);
+  border: 1px solid gray;
+}
+
+.signUpLoginForm input:focus {
+  background-color: rgba(255, 255, 255, 0.432);
+}
+
+.signUpLoginForm button {
+  width: 100%;
+  margin-top: 16px;
+}
+
+/* Nav bar Styles */
+.navBar {
+  width: var(--width-100Percent);
+  height: 60px;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background-color);
+}
+
+.navBar img {
+  width: 44px;
+  cursor: pointer;
+  transform: rotate(-12deg);
+}
+
+.navBar img:hover {
+  transform: rotate(22deg);
+}
+
+.navBar .dropdown-menu {
+  background-color: var(--background-color);
+  color: white;
+}
+
+.navBar .dropdown-item {
+  color: white;
+}
+
+.navBar .dropdown-item:hover {
+  background-color: var(--background-color);
+  color: white;
+}
+
+/* Header Styles */
+.header {
+  width: var(--width-100Percent);
+  height: 200px;
+  background-color: white;
+}
+
+.header img {
+  width: var(--width-100Percent);
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Search filters Styles */
+.inputs-container {
+  width: var(--width-100Percent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 20px;
+  background-color: var(--background-color);
+}
+
+.searchBar,
+.filter {
+  width: var(--width-100Percent);
+  height: 32px;
+  display: flex;
+  align-items: center;
+  border: 1px solid gray;
+  border-radius: 10px;
+  background-color: transparent;
+  padding: 0 8px;
+}
+
+.searchBar input {
+  width: var(--width-100Percent);
+  height: var(--heighh-100Percent);
+  border: none;
+  color: white;
+  background-color: transparent;
+}
+
+.searchBar button {
+  width: 20px;
+  align-self: center;
+  background-color: transparent;
+  border: none;
+}
+
+.searchBar button img {
+  width: var(--width-100Percent);
+}
+
+.searchBar input:focus,
+.filter select:focus {
+  outline: none;
+}
+
+.searchBar:hover,
+.searchBar:focus-within,
+.filter:hover,
+.filter:focus-within {
+  border: 1px solid rgb(255, 230, 0);
+  border-radius: 8px;
+}
+
+.filter select {
+  width: var(--width-100Percent);
+  height: var(--heighh-100Percent);
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+}
+
+.filter select option {
+  background-color: var(--background-color);
+  text-overflow: ellipsis;
+}
+
+/* Not working */
+.filter select option:nth-child(*):hover {
+  background: rgb(255, 230, 0);
+  color: black;
+}
+
+/* Cards layout Styles */
+.cardsLayout {
+  width: var(--width-100Percent);
+  height: var(--heighh-100Percent);
+  background-color: var(--background-color);
+}
+
+/* Home Cards Styles */
+.cards {
+  width: var(--width-100Percent);
+  height: var(--heighh-100Percent);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.cards .card {
+  width: var(--width-100Percent);
+  background-color: rgb(39, 43, 44);
+  color: white;
+  border-radius: 12px;
+}
+
+.cards .card img {
+  width: 100%;
+  align-self: center;
+  border-radius: 10px 10px 0 0;
+  padding: 24px;
+}
+
+.cards .card .card-body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.cards-titleSubtitle-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cards .card .card-body button {
+  width: var(--width-100Percent);
 }

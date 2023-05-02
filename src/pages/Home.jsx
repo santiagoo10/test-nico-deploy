@@ -13,11 +13,11 @@ export function HomePage() {
     return (
         <>
             {firebaseLoading ? <Spinner /> :
-                <div style={{ maxWidth: "100vw", minHeight: "100vh" }}>
+                <main className="cardsLayout">
                     <NavBar handleLogOut={handleLogOut} />
                     <CardsLayout />
                     <Footer />
-                </div>
+                </main>
             }
         </>
     )

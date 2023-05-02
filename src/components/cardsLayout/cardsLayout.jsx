@@ -1,4 +1,3 @@
-import "./cardsLayout.css";
 import { usePokemons } from "../../services/pokemons";
 import { useAllPokemons } from "../../services/allPokemons";
 
@@ -22,7 +21,7 @@ export function CardsLayout() {
   const { pokemons, allPokemonsLoading, allPokemonsError } = useAllPokemons()
 
   return (
-    <div className="cardsLayout">
+    <>
       <Header />
 
       <SearchFilters pokemons={pokemons} searchBar={searchBar} setSearchBar={setSearchBar} setSearchBarResults={setSearchBarResults} setSelectFilterResults={setSelectFilterResults} />
@@ -36,6 +35,6 @@ export function CardsLayout() {
         : selectFilterResults ? <HomeCards pokemonInfo={selectFilterResults} />
           : pokemonInfo ? <HomeCards pokemonInfo={pokemonInfo} handleAmountOfPokemons={handleAmountOfPokemons} /> : null}
 
-    </div >
+    </ >
   );
 }

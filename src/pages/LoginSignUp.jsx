@@ -1,5 +1,3 @@
-import "../components/loginSignUp/loginSignUp.css"
-
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
 
@@ -18,15 +16,16 @@ export function LoginSignUpPage() {
     }
 
     return (
-        <main >
-            <img src="/images/pikachu.png" alt="Pikachu standing with a thinking look " className="backgroundImage" />
-            <section>
-                <div className="logo-h1">
+        <main className="signUpLogin-container">
+            <img src="/images/pikachu.png" alt="Pikachu standing with a thinking look " className="signUpLogin-backgroundImage" />
+
+            <section className="signUpLogin-section">
+                <div className="signUpLogin-section-logo">
                     <img src="/images/pokemon.png" alt="" />
-                    <h1>Pokemon Ft</h1>
+                    <h1>Pokemon Fts</h1>
                 </div>
 
-                <div className="buttons">
+                <div className="signUpLogin-section-buttons">
                     <Link to='/signUp'>
                         <Button variant="dark" value="sign-up" onClick={handleButton} style={{ width: '100%' }}>Sign Up</Button>
                     </Link>
@@ -36,7 +35,6 @@ export function LoginSignUpPage() {
                 </div>
 
                 {buttonSelected === "sign-up" ? <SignUp /> : buttonSelected === "login" ? <Login /> : null}
-
             </section>
         </main>
     )
