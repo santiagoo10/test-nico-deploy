@@ -12,11 +12,11 @@ export function IndividualCardPage() {
     return (
         <>
             {firebaseLoading ? <Spinner /> :
-                <>
+                <main className="individualCards-page">
                     <NavBar handleLogOut={handleLogOut} />
                     <IndividualCards />
                     <Footer />
-                </>
+                </main>
             }
         </>
     )

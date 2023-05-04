@@ -1,5 +1,3 @@
-import './individualCards.css'
-
 import { useEffect, useState } from 'react';
 
 import { useParams } from 'react-router-dom';
@@ -49,96 +47,52 @@ export function IndividualCards() {
 
                 pokemonByIdLoading ? <Spinner /> :
 
-                    pokemonById ? <main >
-                        <Card style={{
-                            width: '100%',
-                            backgroundColor: "rgb(39, 43, 44)",
-                            color: "white",
-                            borderRadius: "10px",
-                        }}>
+                    pokemonById ? <main className='individualCard-container'>
+                        <Card>
                             <Card.Img
                                 variant="top"
                                 src={pokemonById.sprites.other.dream_world.front_default}
                                 alt={`Image of ${pokemonById.name}`}
-                                style={{
-                                    objectFit: "cover",
-                                    maxWidth: "100%",
-                                    maxHeight: "300px",
-                                    backgroundColor: `${useRandomColor()}`,
-                                    padding: "25px"
-                                }} />
-                            <Card.Body style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                                <Card.Title style={{ margin: "0", textTransform: "capitalize" }}>{pokemonById.name}</Card.Title>
-                                <Card.Title style={{ margin: "0", fontSize: "16px" }}>US$ {useRandomPrice()}</Card.Title>
+                                style={{ backgroundColor: `${useRandomColor()}`, }} />
+
+                            <Card.Body >
+                                <Card.Title>{pokemonById.name}</Card.Title>
+                                <Card.Title className='priceFont'>US$ {useRandomPrice()}</Card.Title>
                             </Card.Body>
+
                             <ListGroup className="list-group-flush" >
-                                <ListGroup.Item style={{
-                                    backgroundColor: "rgb(39, 43, 44)",
-                                    color: "white",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: "20px",
-                                    textTransform: "capitalize",
-                                    fontSize: "16px",
-                                    flexWrap: "auto",
-
-                                }}>
+                                <ListGroup.Item className='items'>
                                     {pokemonById.abilities.map((pokemonAbilitie, id) => (
-                                        <p key={id} style={{ margin: "0" }}>{pokemonAbilitie.ability.name}</p>
+                                        <p key={id}>{pokemonAbilitie.ability.name}</p>
                                     ))}
                                 </ListGroup.Item>
-                                <ListGroup.Item style={{
-                                    backgroundColor: "rgb(39, 43, 44)",
-                                    color: "white",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    gap: "20px",
-                                    textTransform: "capitalize",
-                                    fontSize: "16px",
-                                    flexWrap: "auto",
-
-                                }}>
+                                <ListGroup.Item className='items'>
                                     {pokemonById.types.map((pokemonType, id) => (
-                                        <p key={id} style={{ margin: "0" }}>{pokemonType.type.name}</p>
+                                        <p key={id}>{pokemonType.type.name}</p>
                                     ))}
                                 </ListGroup.Item>
-                                <ListGroup.Item style={{
-                                    backgroundColor: "rgb(39, 43, 44)",
-                                    color: "white",
-                                    fontSize: "16px",
-                                }}>
+                                <ListGroup.Item className='items'>
                                     {pokemonById.weight} Kg
                                 </ListGroup.Item>
                             </ListGroup>
 
                             <ListGroup className="list-group-flush" >
                                 {pokemonById.stats.map((pokemon, id) => (
-                                    <ListGroup.Item key={id} style={{
-                                        backgroundColor: "rgb(39, 43, 44)",
-                                        color: "white",
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        gap: "5px"
-                                    }}>
-                                        <p style={{ margin: "0", textTransform: "capitalize" }}>{pokemon.stat.name}</p>
-                                        <ProgressBar now={pokemon.base_stat} label={`${pokemon.base_stat}%`} style={{
-                                            backgroundColor: "transparent",
-                                            borderBlock: "1px solid black",
-                                        }} />
+                                    <ListGroup.Item key={id} className='stats'>
+                                        <p>{pokemon.stat.name}</p>
+
+                                        <ProgressBar now={pokemon.base_stat} label={`${pokemon.base_stat}%`} />
                                     </ListGroup.Item>
                                 ))}
                             </ListGroup>
                         </Card>
 
-                        <Button onClick={() => setOpenPopUp(true)} variant="warning" style={{
-                            width: "100%",
-                            position: "sticky",
-                            bottom: "0"
-                        }}>Buy Now</Button>
+                        <Button onClick={() => setOpenPopUp(true)} variant="warning" className='individualCards-buyNowButton'>Buy Now</Button>
 
                         <PopUpToyBuy show={openPopUp} onHide={() => setOpenPopUp(false)} />
 
-                    </main > : "404"}
-        </div>
+                    </main > : "404"
+            }
+        </div >
     );
 }

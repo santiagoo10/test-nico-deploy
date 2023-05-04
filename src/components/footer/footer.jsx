@@ -1,10 +1,14 @@
-import "./footer.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Link } from "react-router-dom";
 
 export function Footer() {
   return (
-    <footer>
-      <img src="/images/pokemon.png" alt="Pokemon" />
+    <footer className="footer">
+      <Link to='/home'>
+        <div className="footer-pokemonLogo-container">
+          <img src="/images/pokemon.png" alt="Pokemon logo" />
+        </div>
+      </Link>
 
       <ul>
         <li>
@@ -26,6 +30,6 @@ export function Footer() {
           <a href='https://www.twitch.tv/pokemon' target='_blank' rel='noreferrer noopener'><img src="/images/twitch.svg" alt="Twitch" /></a>
         </li>
       </ul>
-    </footer>
+    </footer >
   );
 }

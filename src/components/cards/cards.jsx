@@ -15,7 +15,7 @@ export function HomeCards({ pokemonInfo, handleAmountOfPokemons }) {
 
         <main className="cards">
             {pokemonInfo?.map((pokemon) => (
-                <Card key={pokemon.id}>
+                <Card className="grow" key={pokemon.id}>
                     <Card.Img
                         variant="top"
                         src={pokemon.img}
@@ -24,22 +24,19 @@ export function HomeCards({ pokemonInfo, handleAmountOfPokemons }) {
                     />
                     <Card.Body>
                         <div className="cards-titleSubtitle-container">
-                            <Card.Title style={{ margin: "0", textTransform: "capitalize" }}>{pokemon.name}</Card.Title>
+                            <Card.Title>{pokemon.name}</Card.Title>
                             <Card.Subtitle>{`USD ${useRandomPrice()}`}</Card.Subtitle>
                         </div>
 
                         <Link to={`/pokemonft/${pokemon.id}`}>
                             <Button variant="outline-primary">View More</Button>
                         </Link>
-                        {/* <Button variant="warning">Buy Now</Button> */}
                     </Card.Body>
                 </Card>
             ))
             }
 
             <Button variant="outline-warning" onClick={handleAmountOfPokemons}>Load More</Button>
-
-            {/* <Outlet /> */}
         </main >
 
     )
