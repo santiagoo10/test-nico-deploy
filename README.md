@@ -1,3 +1,3 @@
-# Pokemon App
+# Pokemon Ft
 
-Working in the app
+![Home view and individual card view](images/thumbnail.png)
