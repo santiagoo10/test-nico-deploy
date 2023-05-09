@@ -42,7 +42,7 @@ export function IndividualCards() {
     usePokemonId(id)
 
     return (
-        <div>
+        <div className='container-individualCards'>
             {pokemonByIdError ? <ErrorAlert errorValue={pokemonByIdError} /> :
 
                 pokemonByIdLoading ? <Spinner /> :
@@ -91,7 +91,7 @@ export function IndividualCards() {
 
                         <PopUpToyBuy show={openPopUp} onHide={() => setOpenPopUp(false)} />
 
-                    </main > : "404"
+                    </main > : <span>Something is wrong</span>
             }
         </div >
     );

@@ -11,6 +11,10 @@
   max-width: var(--width-100vw);
   min-height: var(--heighh-100vh);
 
+  display: flex;
+  justify-content: center;
+  /* padding: 0 5%; */
+
   font-family: "Nunito", sans-serif;
 }
 
@@ -34,6 +38,7 @@
   width: var(--width-100Percent);
   height: var(--heighh-100Percent);
   object-fit: cover;
+  object-position: 50% 100%;
 }
 
 .signUpLogin-section,
@@ -104,8 +109,8 @@
 /* Nav bar Styles */
 .navBar {
   width: var(--width-100Percent);
-  height: 60px;
-  padding: 0 20px;
+  height: 68px;
+  /* padding: 0 20px; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -142,11 +147,14 @@
   width: var(--width-100Percent);
   height: 200px;
   background-color: white;
+  overflow: hidden;
+  margin-top: 20px;
+  border-radius: 20px;
 }
 
 .header img {
   width: var(--width-100Percent);
-  height: 100%;
+  height: var(--heighh-100Percent);
   object-fit: cover;
 }
 
@@ -157,7 +165,7 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
-  padding: 20px;
+  padding: 20px 0;
   background-color: var(--background-color);
 }
 
@@ -285,9 +293,15 @@
   width: var(--width-100Percent);
   height: var(--heighh-100Percent);
   background-color: var(--background-color);
+  padding: 0 5%;
 }
 
 /* Home Cards Styles */
+.cards-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .cards {
   width: var(--width-100Percent);
   height: var(--heighh-100Percent);
@@ -295,12 +309,13 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  padding: 0 20px;
+  /* padding: 0 20px; */
 }
 
 .cards .card {
   width: var(--width-100Percent);
-  background-color: rgb(39, 43, 44);
+  max-height: var(--heighh-100Percent);
+  background-color: rgb(48, 50, 51);
   color: white;
   border-radius: 12px;
 }
@@ -318,9 +333,10 @@
 
 .cards .card img {
   width: var(--width-100Percent);
+  height: var(--heighh-100Percent);
   align-self: center;
   border-radius: 10px 10px 0 0;
-  padding: 24px;
+  padding: 32px;
 }
 
 .cards .card .card-body {
@@ -345,8 +361,9 @@
   margin: 0;
 }
 
-.cards button {
-  margin-bottom: 16px;
+.cards-container button {
+  margin: 16px 0;
+  place-self: center;
 }
 
 /* Footer Styles */
@@ -356,7 +373,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: 0;
   background-color: var(--background-color);
   border-top: 1px solid rgba(255, 255, 255, 0.068);
 }
@@ -367,11 +384,12 @@
 }
 
 .footer-pokemonLogo-container img {
-  width: 100px;
+  width: var(--width-100Percent);
+  height: var(--heighh-100Percent);
 }
 
 .footer-pokemonLogo-container img:hover {
-  width: 132px;
+  width: 150%;
 }
 
 .footer ul {
@@ -391,17 +409,25 @@
 
 .footer ul li a img {
   width: var(--width-100Percent);
+  height: var(--heighh-100Percent);
   cursor: pointer;
   margin: 0;
 }
 
 .footer ul li img:hover,
 .footer ul li img:active {
-  width: 36px;
+  width: 150%;
 }
 
 /* Individual Cards Styles */
+.container-individualCards {
+  display: flex;
+  place-content: center;
+}
+
 .individualCard-container {
+  width: var(--width-100Percent);
+  height: var(--heighh-100Percent);
   background-color: var(--background-color);
   display: flex;
   flex-direction: column;
@@ -409,21 +435,21 @@
   gap: 20px;
   width: var(--width-100Percent);
   height: var(--heighh-100Percent);
-  padding: 20px;
+  padding: 20px 0;
   position: reslative;
 }
 
 .individualCard-container .card {
   width: var(--width-100Percent);
+  height: var(--heighh-100Percent);
   background-color: rgb(39, 43, 44);
   color: white;
   border-radius: 20px;
 }
 
 .individualCard-container .card .card-img-top {
-  object-fit: cover;
-  max-width: var(--width-100Percent);
-  max-height: 300px;
+  width: var(--width-100Percent);
+  height: var(--heighh-100Percent);
   padding: 28px;
 }
 
@@ -488,6 +514,135 @@
 
 .individualCards-page {
   background-color: var(--background-color);
+  padding: 0 5%;
+}
+
+/* Error Page Styles */
+.errorPage {
   width: var(--width-100Percent);
-  height: var(--heighh-100vh);
+  height: var(--heighh-100Percent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  color: white;
+  padding: 0 5%;
+}
+
+/* Media Queries */
+@media (min-width: 450px) {
+  .signUpLogin-backgroundImage {
+    object-position: 100% 100%;
+  }
+
+  .cardsLayout,
+  .individualCards-page,
+  .errorPage {
+    padding: 0 7%;
+  }
+}
+
+@media (min-width: 500px) {
+  .cards-titleSubtitle-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .cards .card {
+    width: 183px;
+  }
+
+  .footer ul li {
+    padding: 4px;
+  }
+
+  .individualCard-container {
+    width: 350px;
+  }
+
+  .cardsLayout,
+  .individualCards-page,
+  .errorPage {
+    padding: 0 10%;
+  }
+}
+
+@media (min-width: 700px) {
+  .cardsLayout,
+  .individualCards-page,
+  .errorPage {
+    padding: 0 15%;
+  }
+}
+
+@media (min-width: 800px) {
+  .signUpLogin-backgroundImage {
+    object-position: 100% 65%;
+  }
+
+  .footer-pokemonLogo-container,
+  .footer ul li {
+    padding: 8px;
+  }
+
+  .individualCard-container {
+    width: 375px;
+  }
+}
+
+@media (min-width: 950px) {
+  .signUpLogin-backgroundImage {
+    object-position: 100% 75%;
+  }
+
+  .cards .card {
+    width: 172px;
+  }
+
+  .cardsLayout,
+  .individualCards-page,
+  .errorPage {
+    padding: 0 20%;
+  }
+}
+
+@media (min-width: 1250px) {
+  .signUpLogin-backgroundImage {
+    object-position: 100% 85%;
+  }
+
+  .footer-pokemonLogo-container,
+  .footer ul li {
+    padding: 12px 8px;
+  }
+}
+
+@media (min-width: 1265px) {
+  .cards .card {
+    width: 194px;
+  }
+
+  .cardsLayout,
+  .individualCards-page,
+  .errorPage {
+    padding: 0 25%;
+  }
+}
+
+@media (min-width: 1500px) {
+  .signUpLogin-backgroundImage {
+    object-position: 100% 75%;
+  }
+
+  .cards .card {
+    width: 184px;
+  }
+
+  .cardsLayout,
+  .individualCards-page,
+  .errorPage {
+    padding: 0 30%;
+  }
 }
