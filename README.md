@@ -2,7 +2,7 @@
 
 ---
 
-![Home view and individual card view](/pokemon-app/public/images/thumbnail.png)
+![Home view and individual card view](images/thumbnail.png)
 
 ## Description
 
