@@ -3,11 +3,13 @@ import Dropdown from 'react-bootstrap/Dropdown';
 
 import { Link } from "react-router-dom";
 
+import pokeballImg from "../../images/pokeball.png"
+
 export function NavBar({ handleLogOut }) {
   return (
     <nav className="navBar">
       <Link to={"/home"}>
-        <img src="/images/pokeball.png" alt="Pokeball" />
+        <img src={pokeballImg} alt="Pokeball" />
       </Link>
 
       <Dropdown >

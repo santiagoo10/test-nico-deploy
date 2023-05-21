@@ -1,3 +1,5 @@
+import searchImg from "../../images/lupa.png"
+
 export function SearchFilters({ pokemons, searchBar, setSearchBar, setSearchBarResults, setSelectFilterResults }) {
 
     function handleSearchBar(e) {
@@ -25,7 +27,7 @@ export function SearchFilters({ pokemons, searchBar, setSearchBar, setSearchBarR
             <form className="searchBar">
                 <input name="searchBar" placeholder="Pikachu, Dito, ..." onInput={handleSearchBar} required />
                 <button>
-                    <img src="/images/lupa.png" alt="magnifying glass" />
+                    <img src={searchImg} alt="magnifying glass" />
                 </button>
             </form>
 

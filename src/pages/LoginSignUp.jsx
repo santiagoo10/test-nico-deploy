@@ -7,6 +7,8 @@ import { SignUp } from "../components/loginSignUp/signUp";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import pikachu from "../images/pikachu.png";
+
 export function LoginSignUpPage() {
     const [buttonSelected, setfButtonSelected] = useState(null)
 
@@ -17,7 +19,7 @@ export function LoginSignUpPage() {
 
     return (
         <main className="signUpLogin-container">
-            <img src="/images/pikachu.png" alt="Pikachu standing with a thinking look " className="signUpLogin-backgroundImage" />
+            <img src={pikachu} alt="Pikachu standing with a thinking look " className="signUpLogin-backgroundImage" />
 
             <section className="signUpLogin-section">
                 <div className="signUpLogin-section-logo">

@@ -1,7 +1,9 @@
+import headerImg from "../../images/pokemon-wallpaper.jpg"
+
 export function Header() {
     return (
         <header className="header">
-            <img src="/images/pokemon-wallpaper.jpg" alt="Pokémon Banner" />
+            <img src={headerImg} alt="Pokémon Banner" />
         </header>
     )
 }

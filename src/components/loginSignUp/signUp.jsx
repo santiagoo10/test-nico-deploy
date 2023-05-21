@@ -9,6 +9,9 @@ import { useNavigate } from "react-router-dom";
 
 import { useFirebaseContext } from "../../firebase/firebaseContext";
 
+import pikachuImg from "../../images/pikachu.png";
+import pokemonLogoImg from "../../images/pokemon.png";
+
 export function SignUp() {
     const [userData, setUserData] = useState({
         email: "",
@@ -41,11 +44,11 @@ export function SignUp() {
 
     return (
         <main className="signUp-container">
-            <img src="/images/pikachu.png" alt="Pikachu standing with a thinking look " className="signUpLogin-backgroundImage" />
+            <img src={pikachuImg} alt="Pikachu standing with a thinking look " className="signUpLogin-backgroundImage" />
 
             <section className="signUp-section">
                 <div className="signUpLogin-section-logo">
-                    <img src="/images/pokemon.png" alt="Pokemon logo" />
+                    <img src={pokemonLogoImg} alt="Pokemon logo" />
                     <h1>Sign Up</h1>
                 </div>
 
