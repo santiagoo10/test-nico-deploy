@@ -1,7 +1,7 @@
 {
   "name": "pokemon-app",
   "version": "0.1.1",
-  "homepage": "https://github.com/santiagoo10/test-nico-deploy",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
