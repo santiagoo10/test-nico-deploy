@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/pokemon-app/static/css/main.54282b2d.css",
+    "main.js": "/pokemon-app/static/js/main.5abf944f.js",
+    "static/media/pokemon-wallpaper.jpg": "/pokemon-app/static/media/pokemon-wallpaper.84059034373740cd7d9e.jpg",
+    "static/media/pikachu.png": "/pokemon-app/static/media/pikachu.c83e265fa8467bbb4de6.png",
+    "static/media/pokemon.png": "/pokemon-app/static/media/pokemon.7aed586e0e5d42b74571.png",
+    "static/media/pokeball.png": "/pokemon-app/static/media/pokeball.1455fa0086784c9f299f.png",
+    "static/media/lupa.png": "/pokemon-app/static/media/lupa.c5e37483be3f494ffde9.png",
+    "index.html": "/pokemon-app/index.html",
+    "main.54282b2d.css.map": "/pokemon-app/static/css/main.54282b2d.css.map",
+    "main.5abf944f.js.map": "/pokemon-app/static/js/main.5abf944f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.54282b2d.css",
+    "static/js/main.5abf944f.js"
+  ]
+}
