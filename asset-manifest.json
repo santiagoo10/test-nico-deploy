@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/santiagoo10/static/css/main.54282b2d.css",
-    "main.js": "/santiagoo10/static/js/main.4505c7fb.js",
-    "static/media/pokemon-wallpaper.jpg": "/santiagoo10/static/media/pokemon-wallpaper.84059034373740cd7d9e.jpg",
-    "static/media/pikachu.png": "/santiagoo10/static/media/pikachu.c83e265fa8467bbb4de6.png",
-    "static/media/pokemon.png": "/santiagoo10/static/media/pokemon.7aed586e0e5d42b74571.png",
-    "static/media/pokeball.png": "/santiagoo10/static/media/pokeball.1455fa0086784c9f299f.png",
-    "static/media/lupa.png": "/santiagoo10/static/media/lupa.c5e37483be3f494ffde9.png",
-    "index.html": "/santiagoo10/index.html",
-    "main.54282b2d.css.map": "/santiagoo10/static/css/main.54282b2d.css.map",
-    "main.4505c7fb.js.map": "/santiagoo10/static/js/main.4505c7fb.js.map"
+    "main.css": "./static/css/main.54282b2d.css",
+    "main.js": "./static/js/main.c28a4ba2.js",
+    "static/media/pokemon-wallpaper.jpg": "./static/media/pokemon-wallpaper.84059034373740cd7d9e.jpg",
+    "static/media/pikachu.png": "./static/media/pikachu.c83e265fa8467bbb4de6.png",
+    "static/media/pokemon.png": "./static/media/pokemon.7aed586e0e5d42b74571.png",
+    "static/media/pokeball.png": "./static/media/pokeball.1455fa0086784c9f299f.png",
+    "static/media/lupa.png": "./static/media/lupa.c5e37483be3f494ffde9.png",
+    "index.html": "./index.html",
+    "main.54282b2d.css.map": "./static/css/main.54282b2d.css.map",
+    "main.c28a4ba2.js.map": "./static/js/main.c28a4ba2.js.map"
   },
   "entrypoints": [
     "static/css/main.54282b2d.css",
-    "static/js/main.4505c7fb.js"
+    "static/js/main.c28a4ba2.js"
   ]
 }
